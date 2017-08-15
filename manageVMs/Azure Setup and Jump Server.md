@@ -125,13 +125,13 @@ azure network nsg show --resource-group $resourceGroupName \
 This is a one time task. If you already have one, skip this step.
 
 ```
-azure storage account create $storageAccountName --resource-group $resourceGroupName --sku-name PLRS --kind Storage --location $location
+azure storage account create --name $storageAccountName --resource-group $resourceGroupName --sku Premium_LRS --kind Storage --location $location
 ```
 
 Verify by running
 
 ```
-azure storage account show $storageAccountName --resource-group $resourceGroupName
+azure storage account show -n $storageAccountName --resource-group $resourceGroupName
 ```
 
 #### Create Network and Subnet
@@ -161,7 +161,7 @@ Run the following commands to get the subnetId assigned to the environment varia
 ```
 subnetId="$(azure network vnet subnet show --resource-group $resourceGroupName \
                 --vnet-name $vnetName \
-                --name $subnetName|grep Id)"
+                --name $subnetName|grep id)"
 subnetId=${subnetId#*/}  
 ```
 
