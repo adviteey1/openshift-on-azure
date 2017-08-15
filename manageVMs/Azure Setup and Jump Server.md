@@ -193,13 +193,8 @@ azure network public-ip create --resource-group $resourceGroupName \
     --name $publicIPName \
     --location $location \
     --allocation-method Static 
-
-azure network nic create --name $nicName \
-    --resource-group $resourceGroupName \
-    --location $location \
-    --subnet-id $subnetId \
-    --network-security-group-name $networkSecurityGroup \
-    --public-ip-name $publicIPName              
+    
+azure network nic create --name $nicName     --resource-group $resourceGroupName     --location $location     --subnet $subnetName --vnet-name openshift-workshop-eastus-vnet --network-security-group $networkSecurityGroup     --public-ip-address $publicIPName             
 
 
 azure vm create --resource-group $resourceGroupName \
